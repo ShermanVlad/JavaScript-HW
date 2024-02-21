@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HW-1</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+
+</head>
+<body>
+
+<script>
+    // - Створити змінні. Присвоїти кожному з них значення: 'hello','owu','com', 'ua', 1, 10, -999, 123, 3.14, 2.7, 16, true, false. Вивести кожну змінну за допомогою: console.log
+
+    let a1="hello";
+    let a2='owu';
+    let a3="com";
+    let a4='ua';
+    let n1=1;
+    let n2=10;
+    let n3=-999;
+    let n4=123;
+    let n5=3.14;
+    let n6=2.7;
+    let n7=16;
+    let b1=true;
+    let b2=false;
+
+    console.log(a1);
+    console.log(a2);
+    console.log(a3);
+    console.log(a4);
+
+    console.log(n1);
+    console.log(n2);
+    console.log(n3);
+    console.log(n4);
+    console.log(n5);
+    console.log(n6);
+    console.log(n7);
+
+    console.log(b1);
+    console.log(b2);
+
+    // - Створити 3 змінних firstName, middleName, lastName, наповнити їх своїм ПІБ. З'єднати їх в одну змінну person (Не об'єкт, просто за допомоги конкатенації)
+
+    let firstName='Vladyslav';
+    let middleName='Volodymyrovych';
+    let secondName='Sheremeta';
+
+    console.log(firstName);
+    console.log(middleName);
+    console.log(secondName);
+
+    console.log(person=`${firstName} ${middleName} ${secondName}`);
+
+    // let person=`${firstName} ${middleName} ${secondName}`;
+    // console.log(person);
+
+    // - За допомогою оператора typeof визначити типи наступних змінних та вивести їх в консоль. let a = 100; let b = '100'; let c = true;
+
+    let a = 100;
+    let b = '100';
+    let c = true;
+
+    console.log(a,typeof a);
+    console.log(b,typeof b);
+    console.log(c, typeof c);
+
+    // - За допомогою 3х різних prompt() отримати 3 слова які являються вашими Імям, По-Батькові та роками. та вивести в консоль
+
+    let userFirstName=prompt("Your First Name");
+    let userMiddleName=prompt("Your Middle Name");
+    let userSecondName=prompt("Your Second Name");
+
+    alert("Thanks")
+    let conf=confirm("We will collect your data");
+
+    if ( conf===true){
+        console.log(`${userFirstName} ${userMiddleName} ${userSecondName}`);
+    }
+
+    else if ( conf===false){
+        console.log("The user didn`t approve")
+
+    }
+
+
+</script>
+</body>
+</html>

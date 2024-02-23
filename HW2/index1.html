@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Task-1</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+</head>
+<body>
+
+<script>
+    // Масиви та об'єкти:
+    // - Створити масив, наповнити його 10 елементами будь-якого типу, вивести кожен елемент в консоль
+
+    console.log("----------------1--------------")
+
+    let age = 25;
+    let arr = [10, "hello", true, '189274', 21, false, 'Vlad', 3.14, age, '-'];
+    console.log(arr);
+    console.log(arr[0]);
+    console.log(arr[1]);
+    console.log(arr[2]);
+    console.log(arr[3]);
+    console.log(arr[4]);
+    console.log(arr[5]);
+    console.log(arr[6]);
+    console.log(arr[7]);
+    console.log(arr[8]);
+    console.log(arr[9]);
+
+    // - Створити 3 об'єкти які описують книги. Поля об'єкту : title ,pageCount, genre.
+
+    console.log("----------------2--------------")
+
+
+    let book1 = {
+        title: 'The Seven Husbands of Evelyn Hugo',
+        pageCount: 389,
+        genre: 'fiction'
+    }
+    let book2 = {
+        title: 'A Little Life',
+        pageCount: 720,
+        genre: 'contemporary'
+    }
+    let book3 = {
+        title: 'Daisy Jones & The Six',
+        pageCount: 355,
+        genre: 'historical fiction'
+    }
+    console.log(book1)
+    console.log(book2)
+    console.log(book3)
+
+    // - Створити 3 об'єкти які описують книги. Поля об'єкту : title ,pageCount, genre, authors. Поле "автори" - являється  масивом. Кожен автор має поля name та age.
+
+    console.log("----------------3--------------")
+
+
+    let book4 = {
+        title: 'The Count of Monte Cristo',
+        pageCount: 1276,
+        genre: 'classics',
+        authors: [
+            author1 = {
+                name: 'Alexandre Dumas',
+                age: 99
+            },
+            author2 = {
+                name: 'Robin Buss',
+                age: 46
+            }
+        ]
+        // authors: ['Alexandre Dumas', 99] Не зовсім зрозумів завдання, тому зробив два варіанти (закоментований здається менш правильним)
+    }
+    let book5 = {
+        title: 'Slaughterhouse-Five',
+        pageCount: 275,
+        genre: 'science fiction',
+        authors: [
+            author1 = {
+                name: 'Kurt Vonnegut Jr',
+                age: 85
+            }
+        ]
+        // authors: ['Kurt Vonnegut Jr', 85]
+
+    }
+    let book6 = {
+        title: 'Pride and Prejudice',
+        pageCount: 279,
+        genre: 'romance',
+        authors: [
+            author1 = {
+                name: 'Jane Austen',
+                age: 42
+            }
+        ]
+        // authors: ['Jane Austen', 42]
+    }
+    console.log(book4)
+    console.log(book5)
+    console.log(book6)
+
+    // - Створити масив з 10 об'єктами які описують сутніть "користувач". Поля: name, username,password. Вивести в консоль пароль кожного користувача
+
+    console.log("----------------4--------------")
+
+
+    let users=[
+        user1={
+            name : 'Vlad',
+            username : 'Sherman',
+            password : "qwerty1"
+        },
+        user2={
+            name : 'Max',
+            username : 'Max1',
+            password : "qwerty2"
+        },
+        user3={
+            name : 'Myrik',
+            username : 'Myrik1',
+            password : "qwerty3"
+        },
+        user4={
+            name : 'Dima',
+            username : 'Dima1',
+            password : "qwerty4"
+        },
+        user5={
+            name : 'Sergiy',
+            username : 'Sergiy1',
+            password : "qwerty5"
+        },
+        user6={
+            name : 'Taras',
+            username : 'Taras1',
+            password : "qwerty6"
+        },
+        user7={
+            name : 'Pavlo',
+            username : 'Pavlo1',
+            password : "qwerty7"
+        },
+        user8={
+            name : 'Vika',
+            username : 'Vika1',
+            password : "qwerty8"
+        },
+        user9={
+            name : 'Nazar',
+            username : 'Nazar1',
+            password : "qwerty9"
+        },
+        user10={
+            name : 'Ostap',
+            username : 'Ostap1',
+            password : "qwerty10"
+        }
+    ];
+
+    console.log(users[0].password)
+    console.log(users[1].password)
+    console.log(users[2].password)
+    console.log(users[3].password)
+    console.log(users[4].password)
+    console.log(users[5].password)
+    console.log(users[6].password)
+    console.log(users[7].password)
+    console.log(users[8].password)
+    console.log(users[9].password)
+
+    // for (let i=0; i<users.length; i++){
+    //     console.log('---------------','№',i,'--------------')
+    //
+    //     console.log('Name: ',users[i].name)
+    //     console.log('Password: ',users[i].password)
+    // }
+
+</script>
+</body>
+</html>

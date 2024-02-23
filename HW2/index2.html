@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-2</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+</head>
+<body>
+<script>
+  // Логічні розгалуження:
+  //         - Є змінна х, якій ви надаєте довільне числове значення.
+  //         Якщо змінна x не дорівнює нулю, виведіть 'Вірно', інакше виведіть 'Невірно'.
+  //         Перевірте  скрипт пр  a, що дорівнює 1, 0, -3
+
+  console.log('--------------1------------')
+
+  let x=0;
+  if (x !== 0){
+    console.log('Вірно')
+  } else {
+    console.log('Не вірно')
+
+  }
+
+  // - Дано змінну time яка рівна числу від 0 до 59. Потрібно написати код, який перевірить, до якої четверті години попадає число (в першу, другу, третю или четверту частину години).
+  console.log('--------------2------------')
+
+// let time=prompt('Type your number from 0 to 59')
+
+let time=59;
+  if (0<=time && time<=59){
+    if (0<=time && time<15){
+      console.log('The first quarter')
+    } else if (15<=time && time<30){
+        console.log('The second quarter')
+    } else if (30<=time && time<45){
+      console.log('The third quarter')
+    }
+    else{
+      console.log('The fourth quarter')
+    }
+  } else{
+    console.log('Your time is wrong!!! Please type again.')
+  }
+
+
+  // - У змінній day дано якесь число від 1 до 31. Потрібно визначити, у яку половину(декаду) місяця потрапляє це число (у першу, другу чи третю).
+  console.log('--------------3------------')
+
+  let day=1;
+  if (1<=day && day<=31){
+    if (1<=day && day<=10){
+      console.log('The first decade')
+    } else if (11<=day && day<=20){
+      console.log('The second decade')
+    } else{
+      console.log('The third decade')
+
+    }
+  } else{
+    console.log('This day is wrong')
+  }
+
+  // - Скласти розклад на тиждень за домопоги switch. Користувач вводить порядковий номер дня тижня і на екрані відображається інфа що заплановано на цей день (можна замість плану на день, назву дня англійською).
+  console.log('--------------4------------')
+
+  let numOfDay =8;
+  if (0<numOfDay && numOfDay<=7){
+    switch (numOfDay){
+      case 1: console.log('Sunday'); break;
+      case 2: console.log('Monday'); break;
+      case 3: console.log('Tuesday'); break;
+      case 4: console.log('Wednesday'); break;
+      case 5: console.log('Thursday'); break;
+      case 6: console.log('Friday'); break;
+      case 7: console.log('Saturday'); break;
+    }
+  } else {
+    console.log('There are only 7 days in a week')
+  }
+
+  //   - Користувач вводить або має два числа.
+  //          Потрібно знайти та вивести максимальне число з тих двох .
+  //          Також потрібно врахувати коли введені рівні числа.
+  console.log('--------------5------------')
+
+  let num1=6;
+  let num2=6;
+  if( num1>num2) {
+    console.log(' The first is BIGGER than the second')
+  } else if(num1<num2) {
+    console.log(' The first is SMALLER than the second')
+  } else {
+    console.log('Both numbers is equal')
+  }
+
+
+  // - є змінна х, яка може прийняти будь-яке значення (стрінг, число, undefined, null  і тд включно). Напишіть код який, за допомоги  оператора || буде присвоювати змінній х значення "default"  якщо значення змінної х являється falsy (хибноподібні, тобто приводиться до false)
+  console.log('--------------6------------')
+
+  let X=1;
+  // let X=false;
+  // let X=[]/'';
+  // let X=0;
+  // let X
+  // let X='';
+
+  if (X===NaN || X===undefined || !!X===false  || X===null){
+    X='default';
+    console.log(X)
+  } else {
+    console.log('Your X is not falsy: ',X)
+  }
+  // - з файлу arrays.js (лежить в папці 2023 plan ) взяти масив coursesAndDurationArray. За допомоги іф перевірити кожен його елемент на тривалість навчання. У випадку якщо тривалість довша за 5 місяців вивести в консоль "Супер".
+  console.log('--------------7------------')
+
+  let coursesAndDurationArray = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4}
+  ];
+
+  if (coursesAndDurationArray[0].monthDuration>5){
+    console.log('Супер')
+  }else{
+    console.log('Тривалість менше або рівна 5 місяцям')
+  }
+
+  if (coursesAndDurationArray[1].monthDuration>5){
+    console.log('Супер')
+  }else{
+    console.log('Тривалість менше або рівна 5 місяцям')
+  }
+
+  if (coursesAndDurationArray[2].monthDuration>5){
+    console.log('Супер')
+  }else{
+    console.log('Тривалість менше або рівна 5 місяцям')
+  }
+
+  if (coursesAndDurationArray[3].monthDuration>5){
+    console.log('Супер')
+  }else{
+    console.log('Тривалість менше або рівна 5 місяцям')
+  }
+
+  if (coursesAndDurationArray[4].monthDuration>5){
+    console.log('Супер')
+  }else{
+    console.log('Тривалість менше або рівна 5 місяцям')
+  }
+
+  if (coursesAndDurationArray[5].monthDuration>5){
+    console.log('Супер')
+  }else{
+    console.log('Тривалість менше або рівна 5 місяцям')
+  }
+
+  // for (let i=0; i<coursesAndDurationArray.length; i++){
+  //   if (coursesAndDurationArray[i].monthDuration>5){
+  //     console.log('Супер')
+  //   }else{
+  //     console.log('Тривалість менше або рівна 5 місяцям')
+  //   }
+  // }
+
+
+
+</script>
+</body>
+</html>

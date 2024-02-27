@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Add-1</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<script>
+    // --створити масив з:
+    console.log('-------------------------1-------------------------');
+
+    //     - з 5 числових значень
+    let arr1 = [1.5, 23, 47, 6, 3];
+    //     - з 5 стічкових значень
+    let arr2 = ['Vlad', "Max", 'Vika', "Nazar", 'Yulia'];
+    //     - з 5 значень стрічкового, числового та булевого типу
+    let arr3 = [456, "Max", true, "Nazar", 0];
+    //     - та вивести його в консоль
+    console.log(arr1);
+    console.log(arr2);
+    console.log(arr3);
+
+    // -- Створити пустий масив. Наповнити його будь-якими значеннями звертаючись до конкретного індексу. Вивести в консоль
+    console.log('-------------------------2-------------------------');
+    let emptyArray = [];
+
+    for (let i = 0; i < 10; i++) {
+        emptyArray[i] = Math.floor(Math.random() * 10);
+    }
+    emptyArray[10] = 777;
+    emptyArray[0] = 777;
+    console.log(emptyArray)
+    // - є масив [2,17,13,6,22,31,45,66,100,-18] :
+
+    //      1. перебрати його циклом while
+    console.log('-------------------------3.1-------------------------');
+    let arr4 = [2, 17, 13, 6, 22, 31, 45, 66, 100, -18];
+
+    let iForWhile = 0;
+    while (iForWhile < arr4.length) {
+        console.log(`By while ${arr4[iForWhile]}`);
+        iForWhile++;
+    }
+
+    //      2. перебрати його циклом for
+    console.log('-------------------------3.2-------------------------');
+    for (const itemOfArr4 of arr4) {
+
+        console.log(`By iter ${itemOfArr4}`);
+    }
+
+    //      3. перебрати циклом while та вивести  числа тільки з непарним індексом
+    console.log('-------------------------3.3-------------------------');
+    let iForWhile2 = 0;
+    while (iForWhile2<arr4.length) {
+        if (iForWhile2 % 2 === 1) {
+            console.log(`By while ${arr4[iForWhile2]} - Index: ${iForWhile2}`);
+            iForWhile2++;
+        } else{
+            iForWhile2++;
+        }
+    }
+
+    //      4. перебрати циклом for та вивести  числа тільки з непарним індексом
+    console.log('-------------------------3.4-------------------------');
+    for (let i = 0; i < arr4.length; i++) {
+        if (i % 2 === 1) {
+            console.log(`By while ${arr4[i]} - Index: ${i}`);
+        }
+    }
+
+    //      5. перебрати циклом while та вивести  числа тільки парні  значення
+    console.log('-------------------------3.5-------------------------');
+    let iForWhileEven = 0;
+    while (iForWhileEven < arr4.length) {
+        if (arr4[iForWhileEven] % 2 === 0) {
+            console.log(`${arr4[iForWhileEven]} is even by while.`);
+            iForWhileEven++;
+        } else {
+            iForWhileEven++;
+        }
+    }
+
+    //      6. перебрати циклом for та вивести  числа тільки парні  значення
+    console.log('-------------------------3.6-------------------------');
+    for (let i = 0; i < arr4.length; i++) {
+        if (arr4[i] % 2 === 0) {
+            console.log(`${arr4[i]} is even by for.`);
+        }
+    }
+
+    //      7. замінити кожне число кратне 3 на слово "okten"
+    console.log('-------------------------3.7-------------------------');
+    for (let i = 0; i < arr4.length; i++) {
+        if (arr4[i] % 3 === 0) {
+            arr4[i] = 'okten';
+        }
+    }
+    console.log(`New array: ${arr4}`);
+
+    //      8. вивести масив в зворотньому порядку.
+    console.log('-------------------------3.8-------------------------');
+    console.log(`Old array: ${arr4}`);
+    for (let i = 0; i < arr4.length/2; i++) { //демо від 0 до 9 елемента
+        let temp = arr4[i]; // запамятовуємо в окрему змінну 0 елемент
+        arr4[i] = arr4[(arr4.length - 1) - i]; // присвоюємо 0 елементу значення 9-0 елемета(тобто 9)
+        arr4[arr4.length - 1 - i] = temp; // 9 елементу присвоюємо значення 0 елемента
+    }
+    console.log(`Reversed array: ${arr4}`);
+
+    //      9. всі попередні завдання (окрім 8), але в зворотньому циклі (с заду на перед)
+    console.log('-------------------------3.9-------------------------');
+    console.log(`The developer is too lazy to do this`)
+
+    // стоврити масив книжок (назва, кількість сторінок, автори , жанри).
+    console.log('-------------------------6-------------------------');
+    let books = [
+        {
+            name: 'Harry Potter',
+            pageCount: 1441,
+            authors: ['J. K. Rowling'],
+            genre: ['fantasy']
+        },
+        {
+            name: "DON'T TAKE YOUR DREAMS TO THE GRAVE BOOK",
+            pageCount: 370,
+            authors: ['Jimmie Bratcher', 'Petro Petrenko'],
+            genre: ['christian literature', 'biography']
+        },
+        {
+            name: "I Feel Bad About My Neck",
+            pageCount: 1945,
+            authors: ['Nora Ephron', 'Ivan Ivanenko'],
+            genre: ['biography']
+        }
+    ];
+
+    //     -знайти наібльшу книжку.
+    console.log('-------------------------6.1-------------------------');
+    let maxPages = books[0].pageCount;
+    for (let book of books) {
+        if (book.pageCount > maxPages) {
+            maxPages = book;
+        }
+    }
+    console.log(`Books with the biggest count of pages(${maxPages.pageCount}) is "${maxPages.name}"`);
+
+    //     - знайти книжку/ки з найбільшою кількістю жанрів
+    console.log('-------------------------6.2-------------------------');
+    let maxGenres = books[0].genre.length;
+    for (let book of books) {
+        if (book.genre.length > maxGenres) {
+            maxGenres = book;
+        }
+    }
+    console.log(`Books with the biggest count of genres(${maxGenres.genre.length}) is "${maxGenres.name}"`);
+
+    //     - знайти книжку/ки з найдовшою назвою
+    console.log('-------------------------6.3-------------------------');
+    let maxName = books[0].name.length;
+    for (let book of books) {
+        if (book.name.length > maxName) {
+            maxName = book;
+        }
+    }
+    console.log(`Books with the longest name(${maxName.name.length}) is "${maxName.name}"`);
+
+    //     - знайти книжку/ки які писали 2 автори
+    console.log('-------------------------6.4-------------------------');
+    console.log(`Book with two authors: `)
+    for (let book of books) {
+        if (book.authors.length === 2) {
+            console.log(`${book.name}`)
+        }
+    }
+
+    //     - знайти книжку/ки які писав 1 автор
+    console.log('-------------------------6.5-------------------------');
+    console.log(`Book with one authors: `)
+    for (let book of books) {
+        if (book.authors.length === 1) {
+            console.log(`${book.name}`)
+        }
+    }
+</script>
+</body>
+</html>

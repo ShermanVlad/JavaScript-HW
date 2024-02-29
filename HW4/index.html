@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>HW-4</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<script>
+    // - створити функцію яка обчислює та повертає площу прямокутника зі сторонами а і б
+    console.log(`-----------------------1-----------------------`);
+    function areaOfRectangle(a,b) {
+
+        return a * b;
+    }
+    console.log(`Area of rectangle: ${areaOfRectangle(5,6)}`);
+
+    // - створити функцію яка обчислює та повертає площу кола з радіусом r
+    console.log(`-----------------------2-----------------------`);
+    function areaOfCircle(r) {
+        return Math.PI*r**2;
+    }
+    console.log(`Area of circle: ${areaOfCircle(3)}`);
+
+    // - створити функцію яка обчислює та повертає площу циліндру висотою h, та радіутом r
+    console.log(`-----------------------3-----------------------`);
+    function areaOfCylinderWall(r,h) {
+        return 2 * Math.PI * r * h;
+    }
+    function areaOfCylinder(r,h) {
+
+        return areaOfCircle(r) * 2 + areaOfCylinderWall(r,h);
+    }
+    console.log(`Area of cylinder: ${areaOfCylinder(5,6)}`);
+
+    // - створити функцію яка приймає масив та виводить кожен його елемент
+    console.log(`-----------------------4-----------------------`);
+    let arr1 = [1, true, 'Hello', 24, "Vlad", false];
+    function arrayPrinter(array) {
+        for (let i = 0; i < array.length; i++) {
+            console.log(`Arr${i}: ${array[i]}`);
+        }
+    }
+    arrayPrinter(arr1);
+
+    //- створити функцію яка створює параграф з текстом. Текст задати через аргумент
+    document.write(`-----------------------5-----------------------`);
+    function paragraphPrinter(pText) {
+        document.write(`<p> ${pText} </p>`);
+    }
+    paragraphPrinter('Okten is cool!')
+    paragraphPrinter('Okten is cool!')
+
+    // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий
+    document.write(`-----------------------6-----------------------`);
+    function ulMaker(liText) {
+        document.write(`<ul>`)
+        document.write(
+            `
+            <li>${liText}</li>
+            <li>${liText}</li>
+            <li>${liText}</li>
+            `
+        );
+        document.write(`</ul>`)
+    }
+    ulMaker("Lorem")
+    ulMaker("ipsum")
+
+    // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий. Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
+    document.write(`-----------------------7-----------------------`);
+function makerLi(liManyText, liCount) {
+    for (let i = 0; i < liCount; i++) {
+        document.write(`<li>${liManyText}</li>`);
+    }
+}
+function ulMakerManyLi(liManyText, liCount) {
+        document.write(`<ul>`)
+        makerLi(liManyText, liCount);
+        document.write(`</ul>`)
+    }
+    ulMakerManyLi('Vlad',7)
+
+    // - створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
+    document.write(`-----------------------8-----------------------`);
+    //Дані взяв з масиву arr1 48 рядок
+    function ulForArr(array) {
+        document.write(`<ul>`)
+        for (const arrayElement of array) {
+            document.write(`<li>${arrayElement}</li>`)
+        }
+        document.write(`</ul>`)
+    }
+    ulForArr(arr1)
+
+    // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ. Для кожного об'єкту окремий блок.
+    document.write(`-----------------------9-----------------------`);
+    let users = [
+        user1 = {
+            id: 1,
+            name: "Vlad",
+            age: 20
+        },
+        user2 = {
+            id: 2,
+            name: "Vika",
+            age: 20
+        },
+        user3 = {
+            id: 3,
+            name: "Nazar",
+            age: 21
+        }
+    ];
+    function userPrinter(userArr) {
+        for (let user of userArr) {
+            document.write(
+                `
+                <div>Id: ${user.id}, name: ${user.name}, age: ${user.age}</div>
+                `
+            )
+        }
+    }
+    userPrinter(users);
+
+    // - створити функцію яка повертає найменьше число з масиву
+    document.write(`-----------------------10-----------------------`);
+    let arrForMin = [5, 4, 21, 9, 46, 0, 468, 45, 9, 74, 7, 5, 9, 100500, 7, 98, 645, 97];
+    let minOfArr = arrForMin[0];
+    function findMin(array) {
+        for (const arrayElement of array) {
+            if (arrayElement < minOfArr) {
+                minOfArr = arrayElement;
+            }
+        }
+        document.write(`<p>Minimal element of array is: ${minOfArr}</p>`)
+    }
+    findMin(arrForMin);
+
+    // - створити функцію sum(arr)яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад sum([1,2,10]) //->13
+    document.write(`-----------------------11-----------------------`);
+    let sum = 0;
+    function sumArr(array) {
+        for (let arrayElement of array) {
+            sum+=arrayElement;
+        }
+        document.write(`<p>Sum of array: ${sum}</p>`);
+        return sum;
+    }
+    sumArr(arrForMin);
+
+    // - створити функцію swap(arr,index1,index2). Функція міняє місцями заняення у відаовідних індексах
+    // Приклад  swap([11,22,33,44],0,1) //=> [22,11,33,44]
+    document.write(`-----------------------12-----------------------`);
+    document.write(`<p>${arrForMin}</p>`);
+    function swap(arr,index1,index2) {
+        if (index1 < arr.length && index2 < arr.length && index1!==index2) {
+            let temp = arr[index1];
+            arr[index1] = arr[index2];
+            arr[index2] = temp;
+            document.write(`<p>${arr}</p>`);
+        } else if (index1 < arr.length && index2 >= arr.length){
+            document.write(`<p>Your array is smaller that your index2</p>`);
+        }else if (index1 >= arr.length && index2 < arr.length){
+            document.write(`<p>Your array is smaller that your index1</p>`);
+        }else if(index1===index2){
+            document.write(`<p>You can not swap the same element</p>`);
+        }
+        else {
+            document.write(`<p>Your array is smaller that both your indexes</p>`);
+        }
+
+    }
+    swap(arrForMin,1,10)
+
+    // - Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
+    // Приклад exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD') // => 250
+    document.write(`-----------------------13-----------------------`);
+    let exchangedCurrency = 0;
+    function exchange(sumUAH,currencyValues,exchangeCurrency) {
+        for (const currencyValuesObj of currencyValues) {
+            if (currencyValuesObj.currency === exchangeCurrency && currencyValuesObj.value < sumUAH) {
+                exchangedCurrency = sumUAH / currencyValuesObj.value;
+                document.write(`<p>You exchange ${exchangedCurrency} ${currencyValuesObj.currency}</p>`)
+            }
+        }
+    }
+    exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD')// => 250
+    exchange(12600,[{currency:'USD',value:40},{currency:'EUR',value:42}],'EUR') // => 250
+
+    // Тут хоті трохи помудрувати, працює ніби з усім з закоментованого, крім EUR
+    // function exchange(sumUAH,currencyValues,exchangeCurrency) {
+    //     for (const currencyValuesObj of currencyValues) {
+    //         if (currencyValuesObj.currency===exchangeCurrency && currencyValuesObj.value<sumUAH){
+    //             exchangedCurrency = sumUAH / currencyValuesObj.value;
+    //             document.write(`<p>You exchange ${exchangedCurrency} ${currencyValuesObj.currency}</p>`)
+    //             break;
+    //         } else if (currencyValuesObj.value > sumUAH && currencyValuesObj.currency===exchangeCurrency) {
+    //             document.write(`<p>You haven't enough money to buy at least 1${currencyValuesObj.currency}</p>`);
+    //             break;
+    //         }
+    //         else {
+    //             document.write(`<p>We haven't currency like ${exchangeCurrency}</p>`)
+    //             break;
+    //         }
+    //     }
+    // }
+    // exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD') // => 250
+    // exchange(10,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD') // => not enough money
+    // exchange(12600,[{currency:'USD',value:40},{currency:'EUR',value:42}],'EUR') // => 300
+    // exchange(1000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'GBP') // => none this currency
+
+</script>
+</body>
+</html>
+

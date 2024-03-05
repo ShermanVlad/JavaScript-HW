@@ -57,7 +57,7 @@
     // - є масив чисел [10,8,-7,55,987,-1011,0,1050,0] . за допомоги map  перетворити всі об'єкти в масиві на стрінгові.
     console.log(`-----------------6-----------------`)
     let arrOfNumbers = [10, 8, -7, 55, 987, -1011, 0, 1050, 0];
-    arrOfNumbers.map((arrOfNumber)=>{console.log(typeof arrOfNumber.toString(), arrOfNumber)});
+    console.log(arrOfNumbers.map((item) => {return item.toString()}));
     // let arrOfNumbersStr = [];
     // arrOfNumbers.map((arrOfNumber) => arrOfNumbersStr.push(arrOfNumber.toString()))
     // console.log(arrOfNumbersStr);

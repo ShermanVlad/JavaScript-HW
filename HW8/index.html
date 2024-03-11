@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>
+        HW-8</title>
+    <link rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png">
+    <link rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon/favicon-32x32.png">
+    <link rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon/favicon-16x16.png">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+<script>
+    console.log("\n1. Створити функцію конструктор для об'єктів User з полями id, name, surname , email, phone створити пустий масив, наповнити його 10 об'єктами new User(....)");
+    let users = [];
+
+    function User(id, name, surname, email, phone) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+        users.push(this);
+    }
+
+    let u1 = new User(1, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676');
+    let u2 = new User(2, 'Vika', 'Koroleva', 'vika@gmail.com', '+380676767676');
+    let u3 = new User(5, 'Max', 'Sheremeta', 'max@gmail.com', '+380676767676');
+    let u4 = new User(4, 'Svitlana', 'Sheremeta', 'svit@gmail.com', '+380676767676');
+    let u5 = new User(8, 'Yulia', 'Kruk', 'yulia@gmail.com', '+380676767676');
+    let u6 = new User(6, 'Vova', 'Sheremeta', 'vova@gmail.com', '+380676767676');
+    let u7 = new User(3, 'Dima', 'Holod', 'dima@gmail.com', '+380676767676');
+    let u8 = new User(7, 'Nazar', 'Yurchuk', 'nazar@gmail.com', '+380676767676');
+    let u9 = new User(9, 'Sergiy', 'Stasiuk', 'serg@gmail.com', '+380676767676');
+    let u10 = new User(10, 'Ilya', 'Bychkov', 'ilya@gmail.com', '+380676767676');
+    console.log(users);
+
+    console.log('\n2. Взяти масив з  User[] з попереднього завдання, та відфільтрувати , залишивши тільки об\'єкти з парними id (filter)');
+    let filteredUsers = users.filter(user => user.id % 2 === 0);
+    console.log(filteredUsers);
+
+    console.log('\n3. Взяти масив з  User[] з попереднього завдання, та відсортувати його по id. по зростанню (sort)');
+    let sortedUsers = users.sort((u1, u2) => u1.id - u2.id);
+    console.log(sortedUsers);
+
+    console.log("\n4. Cтворити класс для об'єктів Client з полями id, name, surname , email, phone, order (поле є масивом зі списком товарів) створити пустий масив, наповнити його 10 об'єктами Client");
+
+    let clients = [];
+
+    class Client {
+        constructor(id, name, surname, email, phone, order) {
+            this.id = id;
+            this.name = name;
+            this.surname = surname;
+            this.email = email;
+            this.phone = phone;
+            this.order = order;
+            clients.push(this)
+            return this.order.length;
+        }
+    }
+
+    let c1 = new Client(1, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ['1'])
+    let c2 = new Client(2, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ["1", "2", "3"])
+    let c3 = new Client(3, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ["1", "2", "3", "4"])
+    let c4 = new Client(4, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ['1', '2'])
+    let c5 = new Client(5, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ["1", "2", "3", "4"])
+    let c6 = new Client(6, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ['1', '2'])
+    let c7 = new Client(7, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ["1", "2", "3", "4", "5", "6"])
+    let c8 = new Client(8, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ['1'])
+    let c9 = new Client(9, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ['1', '2'])
+    let c10 = new Client(10, 'Vlad', 'Sheremeta', 'vlad@gmail.com', '+380676767676', ['1', '2'])
+    console.log(clients);
+
+    console.log('\n5. Взяти масив (Client [] з попереднього завдання).Відсортувати його по кількості товарів в полі order по зростанню. (sort)');
+    let sortedClients = clients.sort((u1, u2) => (u1.order).length - (u2.order).length)
+    console.log(sortedClients);
+
+    console.log("\n6. Створити функцію конструктор яка дозволяє створювати об'єкти car, з властивостями модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна. додати в об'єкт функції:\n" +
+        "    -- drive () - яка виводить в консоль `їдемо зі швидкістю ${максимальна швидкість} на годину`\n" +
+        "    -- info () - яка виводить всю інформацію про автомобіль в форматі `назва поля - значення поля`\n" +
+        "    -- increaseMaxSpeed (newSpeed) - яка підвищує значення максимальної швидкості на значення newSpeed\n" +
+        "    -- changeYear (newValue) - змінює рік випуску на значення newValue\n" +
+        "    -- addDriver (driver) - приймає об'єкт який \"водій\" з довільним набором полів, і додає його в поточний об'єкт car");
+
+    function Car(model, mark, year, maxSpeed, engineVolume) {
+        this.model = model;
+        this.mark = mark;
+        this.year = year;
+        this.maxSpeed = maxSpeed;
+        this.maxSpeedMsg = function () {
+            console.log(`6.1\nЇдемо зі швидкістю ${maxSpeed} на годину`);
+        };
+        this.engineVolume = engineVolume;
+        this.info = function () {
+            console.log(
+                `6.2\nmodel: ${model},\nmark: ${mark},\nyear: ${year}\nmaxSpeed: ${maxSpeed},\nengineVolume: ${engineVolume}, `
+            )
+        };
+        this.increaseMaxSpeed = function (newSpeed) {
+            console.log(`6.3\nНова швидкість: ${maxSpeed + newSpeed}`);
+        };
+        this.changeYear = function (newYear) {
+            this.year = newYear
+            console.log(`6.4\nЗмінений рік випуску ${this.year}`);
+        };
+        this.addDriver = function (name, surname, age) {
+            console.log('6.5\n');
+            console.log(this.driver = {
+                name,
+                surname,
+                age
+            });
+            console.log(this);
+        };
+    }
+
+    let car1 = new Car('Camry', 'Toyota', 2023, 250, '2.4')
+    car1.maxSpeedMsg();
+    car1.info()
+    car1.increaseMaxSpeed(20)
+    car1.changeYear(2021)
+    car1.addDriver('Vlad', 'Sheremeta', 20)
+
+</script>
+</body>
+</html>

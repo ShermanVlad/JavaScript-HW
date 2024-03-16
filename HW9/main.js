@@ -8,11 +8,14 @@ let divBlock = document.createElement('div');
 
 divBlock.classList.add(`wrap`, `collapse`, `alpha`, `beta`)
 
-divBlock.style.backgroundColor='green'
-divBlock.style.color='white'
-divBlock.style.fontSize = '20px'
-divBlock.style.width='100px'
-divBlock.style.height='30px'
+divBlock.style.backgroundColor = 'green';
+divBlock.style.color = 'white';
+divBlock.style.fontSize = '20px';
+divBlock.style.width = '100px';
+divBlock.style.height = '30px';
+divBlock.style.marginTop = '10px';
+divBlock.style.display = 'flex';
+divBlock.style.alignItems = 'center';
 
 let p = document.createElement("p")
 p.innerText = 'Hello Okten'
@@ -22,11 +25,13 @@ document.body.appendChild(divBlock)
 
 let divBlockCopy = divBlock.cloneNode(true);
 document.body.appendChild(divBlockCopy)
+divBlockCopy.style.marginTop = '10px';
 
 // - Є масив:['Main','Products','About us','Contacts']
 // Зробити ul в середині якої будуть лежати елементи масиву (кожен в своєму li)
 let lis2 = ['Main', 'Products', 'About us', 'Contacts'];
 let ul2 = document.createElement('ul')
+document.getElementsByName("ul2")
 for (let liEl of lis2) {
     let li2 =document.createElement('li')
     li2.innerText = `${liEl}`;
@@ -34,6 +39,9 @@ for (let liEl of lis2) {
 }
 
 document.body.appendChild(ul2);
+ul2.style.border = '2px red solid';
+ul2.style.display = 'flex';
+ul2.style.flexDirection = 'column';
 
 // - Є масив
 // Для кожного елементу масиву зробити блок в якому вивести інформацію про title та monthDuration
@@ -71,6 +79,11 @@ document.body.appendChild(mainDiv3);
 for (const coursesAndDurationArrayElement of coursesAndDurationArray) {
     let divElement3 = document.createElement('div');
     mainDiv3.appendChild(divElement3);
+    divElement3.style.border = '2px purple solid';
+    divElement3.style.display = 'flex';
+    divElement3.style.flexDirection = 'column';
+    divElement3.style.margin = '5px';
+
     let p3 = document.createElement('p');
     divElement3.appendChild(p3);
     p3.innerText = `Title: ${coursesAndDurationArrayElement.title},\nMonthDuration: ${coursesAndDurationArrayElement.monthDuration}`;
@@ -85,6 +98,11 @@ for (const coursesAndDurationArrayElement of coursesAndDurationArray) {
     let divElement4 = document.createElement('div');
     divMain4.appendChild(divElement4);
     divElement4.className = 'item';
+    divElement4.style.border = '2px black solid';
+    divElement4.style.display = 'flex';
+    divElement4.style.flexDirection = 'column';
+    divElement4.style.margin = '5px';
+
     let h1_3 = document.createElement('h1');
     divElement4.appendChild(h1_3);
     h1_3.className = 'heading';
@@ -164,3 +182,236 @@ for (const simpson of simpsons) {
     }
 }
 
+// Цикл в циклі
+// - Є масив coursesArray котрий лежить в arrays.js (на цей момент ви вже знаєте де він знаходиться)
+//
+// Створити для кожного елементу масиву свій блок, блок розділити блоками, в яких будуть зберігатись значення окремих властивостей, для властивості modules зробити список з елементами
+// Приклад структири знаходиться у файлі example.png який лежить в папці з поточним фйлом
+
+let coursesArray = [
+    {
+        title: 'JavaScript Complex',
+        monthDuration: 5,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+    },
+    {
+        title: 'Java Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html',
+            'css',
+            'js',
+            'mysql',
+            'mongodb',
+            'angular',
+            'aws',
+            'docker',
+            'git',
+            'java core',
+            'java advanced']
+    },
+    {
+        title: 'Python Complex',
+        monthDuration: 6,
+        hourDuration: 909,
+        modules: ['html',
+            'css',
+            'js',
+            'mysql',
+            'mongodb',
+            'angular',
+            'aws',
+            'docker',
+            'python core',
+            'python advanced']
+    },
+    {
+        title: 'QA Complex',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'git', 'QA/QC']
+    },
+    {
+        title: 'FullStack',
+        monthDuration: 7,
+        hourDuration: 909,
+        modules: ['html',
+            'css',
+            'js',
+            'mysql',
+            'mongodb',
+            'react',
+            'angular',
+            'aws',
+            'docker',
+            'git',
+            'node.js',
+            'python',
+            'java']
+    },
+    {
+        title: 'Frontend',
+        monthDuration: 4,
+        hourDuration: 909,
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'sass']
+    }
+];
+
+for (const course of coursesArray) {
+
+    let mainDiv6 = document.createElement('div');
+    document.body.appendChild(mainDiv6);
+    mainDiv6.style.width = '600px';
+    mainDiv6.style.height = '400px';
+    mainDiv6.style.border = '2px solid red';
+    mainDiv6.style.display = 'flex';
+    mainDiv6.style.flexDirection = 'column';
+    mainDiv6.style.alignItems = 'center';
+    mainDiv6.style.justifyContent = 'space-around';
+    mainDiv6.style.margin = '10px';
+
+    let divTitle = document.createElement('div');
+    mainDiv6.appendChild(divTitle);
+    divTitle.style.height = '7%';
+    divTitle.style.width = '96%';
+    divTitle.style.display = 'flex';
+    divTitle.style.alignItems = 'center';
+    divTitle.style.justifyContent = 'center';
+    divTitle.style.border = '1px blue solid';
+    divTitle.innerText = course.title;
+
+    let divForDurations = document.createElement('div');
+    mainDiv6.appendChild(divForDurations);
+    divForDurations.style.height = '7%';
+    divForDurations.style.width = '96%';
+    divForDurations.style.display = 'flex';
+    divForDurations.style.alignItems = 'center';
+    divForDurations.style.justifyContent = 'space-between';
+
+    let divMonthsDurations=document.createElement('div')
+    divForDurations.appendChild(divMonthsDurations)
+    divMonthsDurations.style.height = '100%';
+    divMonthsDurations.style.width = '33%';
+    divMonthsDurations.style.display = 'flex';
+    divMonthsDurations.style.alignItems = 'center';
+    divMonthsDurations.style.justifyContent = 'space-between';
+    divMonthsDurations.style.border = '1px blue solid';
+    divMonthsDurations.innerText = `Months Durations: ${course.monthDuration}`;
+
+
+    let divHoursDurations=document.createElement('div')
+    divForDurations.appendChild(divHoursDurations)
+    divHoursDurations.style.height = '100%';
+    divHoursDurations.style.width = '65%';
+    divHoursDurations.style.display = 'flex';
+    divHoursDurations.style.alignItems = 'center';
+    divHoursDurations.style.justifyContent = 'space-between';
+    divHoursDurations.style.border = '1px blue solid';
+    divHoursDurations.innerText = `Hours Durations: ${course.hourDuration}`;
+
+
+    let divModules=document.createElement('div')
+    mainDiv6.appendChild(divModules)
+    divModules.style.height = '72%';
+    divModules.style.width = '96%';
+    divModules.style.display = 'flex';
+    divModules.style.flexDirection = 'column';
+    divModules.style.alignItems = 'center';
+    divModules.style.justifyContent = 'space-around';
+    divModules.style.border = '1px blue solid';
+
+    for (const module in course.modules) {
+        let divModule = document.createElement('div');
+        divModules.appendChild(divModule);
+        divModule.style.width = '94%';
+        divModule.style.border = '1px blue solid';
+        divModule.innerText = course.modules[module];
+    }
+
+    // другий спосіб, трохи важчий, але наче теж працює(щод перевірити треба закоментувати усе що в for( of coursesArray) і розкоментувати нижній код)
+
+    // let mainDiv6 = document.createElement('div');
+    // document.body.appendChild(mainDiv6);
+    // mainDiv6.style.width = '600px';
+    // mainDiv6.style.height = '400px';
+    // mainDiv6.style.border = '2px solid red';
+    // mainDiv6.style.display = 'flex';
+    // mainDiv6.style.flexDirection = 'column';
+    // mainDiv6.style.alignItems = 'center';
+    // mainDiv6.style.justifyContent = 'space-around';
+    // mainDiv6.style.margin = '10px';
+    //
+    // let divTitle = document.createElement('div');
+    // mainDiv6.appendChild(divTitle);
+    // divTitle.style.height = '7%';
+    // divTitle.style.width = '96%';
+    // divTitle.style.display = 'flex';
+    // divTitle.style.alignItems = 'center';
+    // divTitle.style.justifyContent = 'center';
+    // divTitle.style.border = '1px blue solid';
+    //
+    // let divForDurations = document.createElement('div');
+    // mainDiv6.appendChild(divForDurations);
+    // divForDurations.style.height = '7%';
+    // divForDurations.style.width = '96%';
+    // divForDurations.style.display = 'flex';
+    // divForDurations.style.alignItems = 'center';
+    // divForDurations.style.justifyContent = 'space-between';
+    //
+    // let divMonthsDurations=document.createElement('div')
+    // divForDurations.appendChild(divMonthsDurations)
+    // divMonthsDurations.style.height = '100%';
+    // divMonthsDurations.style.width = '33%';
+    // divMonthsDurations.style.display = 'flex';
+    // divMonthsDurations.style.alignItems = 'center';
+    // divMonthsDurations.style.justifyContent = 'space-between';
+    // divMonthsDurations.style.border = '1px blue solid';
+    //
+    // let divHoursDurations=document.createElement('div')
+    // divForDurations.appendChild(divHoursDurations)
+    // divHoursDurations.style.height = '100%';
+    // divHoursDurations.style.width = '65%';
+    // divHoursDurations.style.display = 'flex';
+    // divHoursDurations.style.alignItems = 'center';
+    // divHoursDurations.style.justifyContent = 'space-between';
+    // divHoursDurations.style.border = '1px blue solid';
+    //
+    // let divModules=document.createElement('div')
+    // mainDiv6.appendChild(divModules)
+    // divModules.style.height = '72%';
+    // divModules.style.width = '96%';
+    // divModules.style.display = 'flex';
+    // divModules.style.flexDirection = 'column';
+    // divModules.style.alignItems = 'center';
+    // divModules.style.justifyContent = 'space-around';
+    // divModules.style.border = '1px blue solid';
+    //
+    //
+    // for (const courseKey in course) {
+    //     if (courseKey === 'title') {
+    //         let pTitle=document.createElement('p')
+    //         divTitle.appendChild(pTitle)
+    //         pTitle.innerText = course.title;
+    //     } else if (courseKey === 'monthDuration') {
+    //         let pMonthDuration=document.createElement('p')
+    //         divMonthsDurations.appendChild(pMonthDuration)
+    //         pMonthDuration.innerText = `Months duration: ${course.monthDuration}`;
+    //     } else if (courseKey === 'hourDuration') {
+    //         let pHourDuration = document.createElement('p');
+    //         divHoursDurations.appendChild(pHourDuration);
+    //         pHourDuration.innerText = `Months duration: ${course.hourDuration}`;
+    //     } else {
+    //         for (const module of course.modules) {
+    //
+    //             let moduleP = document.createElement('div');
+    //             divModules.appendChild(moduleP);
+    //             // moduleP.style.height = `100%`;
+    //             moduleP.style.width = `96%`;
+    //             moduleP.style.border = 'solid 1px blue';
+    //             moduleP.style.justifyContent = 'space-around';
+    //             moduleP.innerText = module;
+    //         }
+    //     }
+    // }
+}

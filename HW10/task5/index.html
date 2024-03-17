@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Task5</title>
+</head>
+<body>
+
+<script>
+    // Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
+    let greeting = document.createElement('h2');
+    greeting.id = 'text';
+    document.body.appendChild(greeting);
+    greeting.innerText = 'Hello mentor!';
+
+    let button = document.createElement('button');
+    document.body.appendChild(button);
+    button.style.width = '80px';
+    button.style.height = '20px';
+    button.textContent = 'Hello Vlad';
+
+    button.onclick = function () {
+        let text = document.getElementById('text');
+        text.remove();
+    };
+</script>
+</body>
+</html>

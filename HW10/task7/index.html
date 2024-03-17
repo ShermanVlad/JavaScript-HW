@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Task7</title>
+</head>
+<body>
+<script>
+    // *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+    //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+
+    let main = document.createElement('div');
+    main.style.display = 'flex';
+    main.style.flexDirection = 'column';
+    main.style.height = '100px';
+    main.style.width = '200px';
+    main.style.alignItems = 'center';
+    main.style.justifyContent = 'center';
+
+    let countRows = document.createElement('input');
+    countRows.setAttribute('placeholder', 'Enter count of rows');
+
+    let countColumns = document.createElement('input');
+    countColumns.setAttribute('placeholder', 'Enter count of columns');
+
+    let symbols = document.createElement('input');
+    symbols.setAttribute('placeholder', 'Enter symbols');
+
+    let button = document.createElement('button');
+    button.textContent = 'Submit';
+    button.style.height = '20px';
+    button.style.width = '60px';
+
+    main.append(countRows, countColumns, symbols, button);
+    document.body.appendChild(main);
+
+    button.onclick = function () {
+        let table = document.createElement('table');
+        let tbody = document.createElement('tbody');
+
+        let rows = parseInt(countRows.value);
+        let columns = parseInt(countColumns.value);
+        let symbolsArr = symbols.value.split('');
+
+        for (let i = 0; i < rows; i++) {
+            let row = document.createElement('tr');
+
+            for (let j = 0; j < columns; j++) {
+                let cell = document.createElement('td');
+                let symbolIndex = (i * columns + j) % symbolsArr.length;
+
+                cell.textContent = symbolsArr[symbolIndex];
+
+                row.appendChild(cell);
+            }
+
+            tbody.appendChild(row);
+        }
+
+        table.appendChild(tbody);
+        main.appendChild(table);
+    };
+
+</script>
+</body>
+</html>

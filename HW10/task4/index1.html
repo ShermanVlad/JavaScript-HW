@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-4</title>
+</head>
+<body>
+<div>
+    <button id="previous">previous</button>
+    <button id="next">next</button>
+</div>
+<script>
+    // зробити масив на 100 об'єктів та дві кнопки prev next
+    // при завантажені сторінки з'являються перші 10 об'єктів.
+    // При натисканні next виводяться настпні 10 об'єктів
+    // При натисканні prev виводяться попередні 10 об'єктів
+
+    let main = document.getElementsByTagName('div');
+    let previous = document.getElementById('previous');
+
+    let next = document.getElementById('next');
+    let arr = [];
+    for (let i = 0; i < 100; i++) {
+        arr.push(i+1);
+    }
+
+    localStorage.setItem('arr', JSON.stringify(arr));
+    localStorage.setItem('from', JSON.stringify(0));
+    localStorage.setItem('to', JSON.stringify(10));
+
+    window.onload=function (){
+        let from = JSON.parse(localStorage.getItem('from'));
+        let to = JSON.parse(localStorage.getItem('to'));
+
+        for (from; from < to; from++) {
+            let printNum = document.createElement('h5');
+            document.body.appendChild(printNum);
+            let jsonArr = localStorage.getItem('arr');
+            let parseArr = JSON.parse(jsonArr);
+            printNum.innerText = parseArr[from];
+        }
+
+        next.onclick = function () {
+            document.querySelectorAll('h5').forEach(e => e.remove());
+            let newFrom = JSON.parse(localStorage.getItem('from')) + 10;
+            let newTo = JSON.parse(localStorage.getItem('to')) + 10;
+            // console.log(`From: ${newFrom}`);
+            // console.log(`To: ${newTo}`);
+
+            if (newFrom>=arr.length) {
+                let printNum = document.createElement('h5');
+                document.body.appendChild(printNum);
+                printNum.innerText = 'End of array, please click on previous';
+                return;
+            }
+
+            localStorage.setItem('from', JSON.stringify(newFrom));
+            localStorage.setItem('to', JSON.stringify(newTo));
+
+
+            for (newFrom; newFrom < newTo; newFrom++) {
+                let printNum = document.createElement('h5');
+                document.body.appendChild(printNum);
+                let jsonArr = localStorage.getItem('arr');
+                let parseArr = JSON.parse(jsonArr);
+                printNum.innerText = parseArr[newFrom];
+            }
+
+        };
+
+        previous.onclick=function () {
+            document.querySelectorAll('h5').forEach(e => e.remove());
+
+            let newFrom = JSON.parse(localStorage.getItem('from'))-10;
+            let newTo = JSON.parse(localStorage.getItem('to'))-10;
+            // console.log(`From: ${newFrom}`);
+            // console.log(`To: ${newTo}`);
+
+            if (newFrom<=0) {
+                let printNum = document.createElement('h5');
+                document.body.appendChild(printNum);
+                printNum.innerText = 'End of array, please click on next';
+                return;
+            }
+
+            localStorage.setItem('from', JSON.stringify(newFrom));
+            localStorage.setItem('to', JSON.stringify(newTo));
+
+            for (newFrom; newFrom < newTo; newFrom++) {
+                let printNum = document.createElement('h5');
+                document.body.appendChild(printNum);
+                let jsonArr = localStorage.getItem('arr');
+                let parseArr = JSON.parse(jsonArr);
+                printNum.innerText = parseArr[newFrom];
+
+            }
+        }
+    }
+
+</script>
+
+</body>
+</html>

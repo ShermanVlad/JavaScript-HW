@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Task6</title>
+</head>
+<body>
+<script>
+    // створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
+
+    let input = document.createElement('input');
+    input.setAttribute('placeholder','type your age');
+    let button = document.createElement('button');
+    button.textContent = 'confirm';
+    document.body.append(input, button);
+    button.onclick = function () {
+        if (typeof parseInt(input.value) == 'number' && !isNaN(input.value)) {
+            if (input.value < 18) {
+                document.querySelectorAll('h3').forEach(text => text.remove());
+                let msg = document.createElement('h3');
+                document.body.appendChild(msg);
+                msg.innerText = 'Your age is lower than 18';
+            } else {
+                document.querySelectorAll('h3').forEach(text => text.remove());
+                let msg = document.createElement('h3');
+                document.body.appendChild(msg);
+                msg.innerText = 'Your age is 18 or bigger';
+            }
+        } else {
+            document.querySelectorAll('h3').forEach(text => text.remove());
+            let msg = document.createElement('h3');
+            document.body.appendChild(msg);
+            msg.innerText = 'Please type a number';
+        }
+    };
+
+</script>
+</body>
+</html>

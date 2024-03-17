@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Task3.2</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<script>
+  // Є ще сторінка sessions.html (назва довільна), при відвідуванні якої потрібно відмалювати всю інформацію про відвідування сторінки index.html. Інфу НЕ виводити в консоль, а побудувати дом структуру під кожну сессію
+
+  let sessionsJSON = localStorage.getItem('sessions');
+  let sessionsParse = JSON.parse(sessionsJSON);
+  // console.log(sessionsParse);
+
+  for (let i = 0; i < sessionsParse.length; i++) {
+      let currentDate = new Date(sessionsParse[i]);
+
+      let main = document.createElement('main');
+      document.body.appendChild(main);
+      main.style.margin = '10px';
+      main.style.width = '206px';
+      main.style.display = 'flex';
+      main.style.flexDirection = 'column';
+      main.style.border = '2px solid blue';
+
+      let titleDiv = document.createElement('div');
+      let yearDiv = document.createElement('div');
+      let monthDiv = document.createElement('div');
+      let dayDiv = document.createElement('div');
+      let hoursDiv = document.createElement('div');
+      let minutesDiv = document.createElement('div');
+      let secondsDiv = document.createElement('div');
+      let milliSecondsDiv = document.createElement('div');
+      main.append(titleDiv,yearDiv,monthDiv,dayDiv,hoursDiv,minutesDiv,secondsDiv,milliSecondsDiv);
+
+      let stylesForDives = document.getElementsByTagName('div');
+      for (let div of stylesForDives) {
+          div.style.margin = '1px';
+          div.style.height = '50px';
+          div.style.width = '200px';
+          div.style.display = 'flex';
+          div.style.border = '2px solid red';
+          div.style.alignItems = 'center';
+          div.style.justifyContent = 'center';
+      }
+
+      titleDiv.innerText=`Session №: ${i+1}`
+      yearDiv.innerText = `Year: ${currentDate.getFullYear()}`;
+      monthDiv.innerText = `Month: ${currentDate.getMonth() + 1}`;
+      dayDiv.innerText = `Day: ${currentDate.getDate()}`;
+      hoursDiv.innerText = `Hours: ${currentDate.getHours()}`;
+      minutesDiv.innerText = `Minutes: ${currentDate.getMinutes()}`;
+      secondsDiv.innerText = `Seconds: ${currentDate.getSeconds()}`;
+      milliSecondsDiv.innerText = `Milli-seconds: ${currentDate.getMilliseconds()}`;
+  }
+
+</script>
+</body>
+</html>

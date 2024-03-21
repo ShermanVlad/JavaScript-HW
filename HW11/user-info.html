@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User-info</title>
+</head>
+<body>
+<script>
+
+  const url = new URLSearchParams(location.search)
+  const userID = url.get('id')
+
+  fetch(`https://jsonplaceholder.typicode.com/users/${userID}`)
+      .then(res => res.json())
+      .then(userInfo => {
+
+          console.log(userInfo);
+
+          let userInfoDiv = document.createElement('div');
+          document.body.appendChild(userInfoDiv);
+
+          for (const [key, values] of Object.entries(userInfo)) {
+
+              if (typeof values !== 'object') {
+
+                  let text = document.createElement('h4');
+                  userInfoDiv.appendChild(text);
+                  text.innerText = `${key}: ${values}`;
+
+              } else {
+
+                  let text = document.createElement('h4');
+                  userInfoDiv.appendChild(text);
+                  text.innerText = `${key}:`;
+
+                  let keyUl = document.createElement('ul');
+                  userInfoDiv.appendChild(keyUl);
+
+                  for (const value in values) {
+                      // console.log(value);
+                      let valueLi = document.createElement('li');
+                      keyUl.appendChild(valueLi);
+                      valueLi.innerText = `${value}: ${values[value]}`;
+                  }
+              }
+          }
+      });
+
+</script>
+</body>
+</html>

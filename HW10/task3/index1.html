@@ -13,8 +13,7 @@
   // Є сторінка index.html (назва довільна), при відвідуванні якої в локальне сховще, в масив sessions зберігається інформація про дату та час відвідування сторінки.
 
   window.onload = function () {
-      let sessionsJSON = localStorage.getItem('sessions');
-      let sessionsParse = JSON.parse(sessionsJSON);
+      let sessionsParse = JSON.parse(localStorage.getItem('sessions'));
 
       if (!Array.isArray(sessionsParse)) {
           sessionsParse = [];

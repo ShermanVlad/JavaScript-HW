@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Task-1</title>
+</head>
+<body>
+<script>
+    // - взяти https://dummyjson.com/docs/carts та вивести інформацію про всі корзини. Відобразити всі поля кожної корзини.
+
+    fetch('https://dummyjson.com/carts')
+        .then(res => res.json())
+        .then(value=> {
+            let {carts} = value;
+
+            let main = document.createElement('div');
+            document.body.appendChild(main);
+
+            for (const cart of carts) {
+                console.log(cart);
+
+                let cartID = document.createElement('h2');
+                cartID.innerText = `Cart №: ${cart.id}`;
+                main.appendChild(cartID);
+
+                let cartDiv = document.createElement('div');
+                main.appendChild(cartDiv);
+                cartDiv.style.border = '2px solid red';
+                cartDiv.style.height = '1000px';
+                cartDiv.style.width = '100%';
+                cartDiv.style.display = 'flex';
+                cartDiv.style.alignItems = 'center';
+                cartDiv.style.justifyContent = 'space-around';
+                cartDiv.style.marginBottom = '200px';
+
+                let totalDiv = document.createElement('div');
+                cartDiv.appendChild(totalDiv);
+                totalDiv.style.border = '1px solid blue';
+                totalDiv.style.height = '900px';
+                totalDiv.style.width = '15%';
+                totalDiv.style.display = 'flex';
+                totalDiv.style.flexDirection = 'column';
+                totalDiv.style.alignItems = 'center';
+                totalDiv.style.justifyContent = 'space-between';
+
+                let totalH = document.createElement('h2');
+                totalH.innerText = `Total: ${cart.total}`;
+                totalDiv.appendChild(totalH);
+
+                let discountedTotalH = document.createElement('h2');
+                discountedTotalH.innerText = `Total discount: ${cart.discountedTotal}`;
+                totalDiv.appendChild(discountedTotalH);
+
+                let userId = document.createElement('h2');
+                userId.innerText = `User id: ${cart.userId}`;
+                totalDiv.appendChild(userId);
+
+                let totalProductsH = document.createElement('h2');
+                totalProductsH.innerText = `Total products: ${cart.totalProducts}`;
+                totalDiv.appendChild(totalProductsH);
+
+                let totalQuantityH = document.createElement('h2');
+                totalQuantityH.innerText = `Total quantity: ${cart.totalQuantity}`;
+                totalDiv.appendChild(totalQuantityH);2
+                for (const product of cart.products) {
+                    let productDiv = document.createElement('div');
+                    cartDiv.appendChild(productDiv);
+                    productDiv.style.border = '1px solid black';
+                    productDiv.style.height = '900px';
+                    productDiv.style.width = '15%';
+                    productDiv.style.display = 'flex';
+                    productDiv.style.flexDirection = 'column';
+                    productDiv.style.alignItems = 'center';
+                    productDiv.style.justifyContent = 'space-between';
+
+                    let productId = document.createElement('h4');
+                    productId.innerText = `Product id: ${product.id}`;
+                    productDiv.appendChild(productId);
+
+                    let productTitle = document.createElement('h2');
+                    productTitle.innerText = `${product.title}`;
+                    productDiv.appendChild(productTitle);
+
+                    let productPrice = document.createElement('h3');
+                    productPrice.innerText = `Price: ${ product.price}`;
+                    productDiv.appendChild(productPrice);
+
+                    let productQuantity = document.createElement('h4');
+                    productQuantity.innerText = `Quantity: ${product.quantity}`;
+                    productDiv.appendChild(productQuantity);
+
+                    let productTotal = document.createElement('h4');
+                    productTotal.innerText = `Total: ${product.total}`;
+                    productDiv.appendChild(productTotal);
+
+                    let productDiscountPercentage = document.createElement('h4');
+                    productDiscountPercentage.innerText = `Discount %: ${product.discountPercentage}`;
+                    productDiv.appendChild(productDiscountPercentage);
+
+                    let productDiscountedPrice = document.createElement('h4');
+                    productDiscountedPrice.innerText = `Price with discount : ${product.discountedPrice}`;
+                    productDiv.appendChild(productDiscountedPrice);
+
+                    let productImg = document.createElement('img');
+                    productImg.src = product.thumbnail;
+                    productImg.style.height = '50%';
+                    productImg.style.width = '100%';
+                    productDiv.appendChild(productImg);
+                }
+            }
+        })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-2</title>
+</head>
+<body>
+<script>
+    // - взяти https://dummyjson.com/docs/recipes та вивести інформацію про всі рецепти. Інгредієнти повинні бути список під час відображення.
+
+        fetch('https://dummyjson.com/recipes?limit=50')
+        .then(res => res.json())
+        .then( value => {
+            let {recipes} = value;
+            console.log(value);
+            for (const recipe of recipes) {
+                let recipeDiv = document.createElement('div');
+                document.body.appendChild(recipeDiv);
+                recipeDiv.style.border = 'solid 2px green';
+
+                let recipeIdH = document.createElement('h2');
+                recipeDiv.appendChild(recipeIdH);
+                recipeIdH.innerText = `Id: ${recipe.id}`;
+
+                let recipeNameH = document.createElement('h2');
+                recipeDiv.appendChild(recipeNameH);
+                recipeNameH.innerText = `Name: ${recipe.name}`;
+
+                let ingredientsTitle = document.createElement('h2');
+                recipeDiv.appendChild(ingredientsTitle);
+                ingredientsTitle.innerText = "Ingredients:";
+
+                let ingredientsUl = document.createElement('ul');
+                recipeDiv.appendChild(ingredientsUl);
+
+                for (const ingredient of recipe.ingredients) {
+                    let ingredientLi = document.createElement('li');
+                    ingredientsUl.appendChild(ingredientLi);
+                    ingredientLi.innerText = ingredient;
+                }
+                let instroctionsTitle = document.createElement('h2');
+                recipeDiv.appendChild(instroctionsTitle);
+                instroctionsTitle.innerText = "Instructions:";
+
+                for (const instruction of recipe.instructions) {
+                    let instructionH = document.createElement('p');
+                    recipeDiv.appendChild(instructionH);
+                    instructionH.innerText = instruction;
+                }
+
+                let prepTimeMinutesH = document.createElement('h2');
+                recipeDiv.appendChild(prepTimeMinutesH);
+                prepTimeMinutesH.innerText = `Prepousing time minutes: ${recipe.prepTimeMinutes}`;
+
+                let cookTimeMinutesH = document.createElement('h2');
+                recipeDiv.appendChild(cookTimeMinutesH);
+                cookTimeMinutesH.innerText = `Cook time minutes: ${recipe.cookTimeMinutes}`;
+
+                let servingsH = document.createElement('h2');
+                recipeDiv.appendChild(servingsH);
+                servingsH.innerText = `Servings: ${recipe.servings}`;
+
+                let difficultyH = document.createElement('h2');
+                recipeDiv.appendChild(difficultyH);
+                difficultyH.innerText = `Difficulty: ${recipe.difficulty}`;
+
+                let cuisineH = document.createElement('h2');
+                recipeDiv.appendChild(cuisineH);
+                cuisineH.innerText = `Cuisine: ${recipe.cuisine}`;
+
+                let caloriesPerServingeH = document.createElement('h2');
+                recipeDiv.appendChild(caloriesPerServingeH);
+                caloriesPerServingeH.innerText = `Calories percentage savings: ${recipe.caloriesPerServing}`;
+
+                let tagTitle = document.createElement('h2');
+                recipeDiv.appendChild(tagTitle);
+                tagTitle.innerText = "Tags:";
+
+                for (const tag of recipe.tags) {
+                    let tagP = document.createElement('p');
+                    recipeDiv.appendChild(tagP);
+                    tagP.innerText = `${tag}`;
+                }
+
+                let userIdH = document.createElement('h2');
+                recipeDiv.appendChild(userIdH);
+                userIdH.innerText = `User id: ${recipe.userId}`;
+
+                let imageImg = document.createElement('img');
+                recipeDiv.appendChild(imageImg);
+                imageImg.src =recipe.image;
+
+                let ratingH = document.createElement('h2');
+                recipeDiv.appendChild(ratingH);
+                ratingH.innerText = `Rating: ${recipe.rating}`;
+
+                let reviewCountH = document.createElement('h2');
+                recipeDiv.appendChild(reviewCountH);
+                reviewCountH.innerText = `ReviewCount: ${recipe.reviewCount}`;
+
+                let mealTitle = document.createElement('h2');
+                recipeDiv.appendChild(mealTitle);
+                mealTitle.innerText = "Meal types:";
+
+                for (const mealTypeEl of recipe.mealType) {
+                    let mealTypeP = document.createElement('p');
+                    recipeDiv.appendChild(mealTypeP);
+                    mealTypeP.innerText = `${mealTypeEl}`;
+                }
+            }
+        });
+</script>
+</body>
+</html>

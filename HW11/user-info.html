@@ -14,7 +14,7 @@
       .then(res => res.json())
       .then(userInfo => {
 
-          console.log(userInfo);
+          // console.log(userInfo);
 
           let userInfoDiv = document.createElement('div');
           document.body.appendChild(userInfoDiv);
@@ -37,10 +37,24 @@
                   userInfoDiv.appendChild(keyUl);
 
                   for (const value in values) {
-                      // console.log(value);
-                      let valueLi = document.createElement('li');
-                      keyUl.appendChild(valueLi);
-                      valueLi.innerText = `${value}: ${values[value]}`;
+                      if (typeof values[value] !== 'object') {
+                          let valueLi = document.createElement('li');
+                          keyUl.appendChild(valueLi);
+                          valueLi.innerText = `${value}: ${values[value]}`;
+                      } else {
+                          let valueLi = document.createElement('li');
+                          keyUl.appendChild(valueLi);
+                          valueLi.innerText = `${value}:`;
+
+                          let geoUl = document.createElement('ul');
+                          valueLi.appendChild(geoUl);
+
+                          for (const [valueObjKey,keyObjKey] of Object.entries(values[value])) {
+                              let geoLi = document.createElement('li');
+                              geoUl.appendChild(geoLi);
+                              geoLi.innerText = `${valueObjKey}: ${keyObjKey}`;
+                          }
+                      }
                   }
               }
           }

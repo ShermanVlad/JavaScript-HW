@@ -7,6 +7,14 @@
     <meta http-equiv="X-UA-Compatible"
           content="ie=edge">
     <title>Post-details</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,7 +24,6 @@
     // 7 Вивести всю, без виключення, інформацію про об'єкт post на який клікнули .
     // 8 Нижчє інформаці про пост, вивести всі коментарі поточного поста (ендпоінт  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
 
-    // блоки з короткою іфною про post - в ряд по 5 .
     // post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.
     // Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки (дати фон. марджини і тд)
 
@@ -26,7 +33,57 @@
     fetch(`https://jsonplaceholder.typicode.com/posts/${postID}`)
         .then(value => value.json())
         .then(post => {
-            console.log(post);
+            let postDiv = document.createElement('div');
+            document.body.append(postDiv);
+            postDiv.style.flex = 'display';
+            postDiv.style.flexDirection = 'column';
+            postDiv.style.alignItems = 'center';
+            postDiv.style.justifyContent = 'space-between';
+            postDiv.style.background = '#fcf9e8';
+            postDiv.style.border = 'black 1px solid';
+            postDiv.style.padding = '10px';
+            postDiv.style.margin = '10px';
+
+            for (const postKey in post) {
+                let postText = document.createElement('p');
+                postDiv.appendChild(postText);
+                postText.innerText = postKey+": "+post[postKey];
+            }
+
+            let commentsDiv = document.createElement('div');
+            document.body.appendChild(commentsDiv);
+            commentsDiv.style.display = 'flex';
+            commentsDiv.style.flexWrap = 'wrap';
+            commentsDiv.style.width = '100%';
+            commentsDiv.style.alignItems = 'space-between';
+            commentsDiv.style.justifyContent = 'space-evenly';
+            commentsDiv.style.alignContent = 'space-between';
+            commentsDiv.style.height = '410px';
+
+            fetch(`https://jsonplaceholder.typicode.com/posts/${postID}/comments`)
+                .then(value => value.json())
+                .then(comments => {
+                    for (const comment of comments) {
+                        console.log(comment);
+                        let commentDiv = document.createElement('div');
+                        commentsDiv.appendChild(commentDiv);
+                        commentDiv.style.display = 'flex';
+                        commentDiv.style.flexDirection = 'column';
+                        commentDiv.style.border = 'solid 1px black';
+                        commentDiv.style.width = '23%';
+                        commentDiv.style.height = '200px';
+                        commentDiv.style.alignItems = 'start';
+                        commentDiv.style.justifyContent = 'space-between';
+                        commentDiv.style.background = 'lightgray';
+
+                        for (const commentsKey in comment) {
+                            let commentText = document.createElement('p');
+                            commentDiv.appendChild(commentText);
+                            commentText.style.fontSize = '8px';
+                            commentText.innerText = commentsKey + ': ' + comment[commentsKey];
+                        }
+                    }
+                });
         });
 
 

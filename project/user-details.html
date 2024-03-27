@@ -9,6 +9,7 @@
     <title>User-details</title>
     <style>
         body {
+            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -20,10 +21,16 @@
             /*align-items: center;*/
             padding-left: 30px;
             padding-right: 30px;
-            margin: 30px;
+            margin: 10px;
             justify-content: space-evenly;
-            border: 2px solid red;
-            background-color: peachpuff;
+            border: 2px solid darkblue;
+            background-color: #c5d9ed;
+        }
+        .postTitle:first-letter {
+            text-transform: uppercase;
+        }
+        li {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -37,6 +44,7 @@
     // // 6 Каждому посту додати кнопку/посилання, при кліку на яку відбувається перехід на сторінку post-details.html, котра має детальну інфу про поточний пост.
 
     // user-details.html - блок з інфою про user зверху сторінки. Кнопка нижчє, на 90% ширини сторінки, по центру.
+    // блоки з короткою іфною про post - в ряд по 5 .
 
     const url = new URLSearchParams(location.search)
     const userID = url.get('id')
@@ -46,7 +54,7 @@
         .then(user => {
 
             let userInfoDiv = document.createElement('div');
-            userInfoDiv.classList = 'userInfoDiv';
+            userInfoDiv.classList.add('userInfoDiv');
             document.body.appendChild(userInfoDiv);
 
             for (const [key, values] of Object.entries(user)) {
@@ -91,44 +99,62 @@
 
             let postsBtn = document.createElement('button');
             document.body.appendChild(postsBtn);
-            postsBtn.innerText = `Post of current user`;
+            postsBtn.innerText = `Posts of current user`;
             postsBtn.style.width = '90%';
 
             let postsDiv = document.createElement('div');
             document.body.appendChild(postsDiv);
-            postsBtn.onclick=function () {
-                postsDiv.style.border = '1px solid green';
-                postsDiv.style.margin = '30px';
-                postsDiv.style.width = '90%';
-                postsDiv.style.display = 'flex';
-                postsDiv.style.flexDirection = 'row';
-                postsDiv.style.flexWrap = 'wrap';
-                postsDiv.innerText = '';
+            postsDiv.style.display = 'none';
+            postsDiv.style.flexWrap = 'wrap';
+            postsDiv.style.marginTop = '30px';
+            postsDiv.style.width = '90%';
+            postsDiv.style.height = '400px';
+            postsDiv.style.alignItems = 'center';
+            postsDiv.style.justifyContent = 'space-between';
 
+            postsBtn.addEventListener('click', function (){
+                if (postsDiv.style.display==='none'){
+                    postsDiv.style.display = 'flex';
+                    postsBtn.innerText = `Hide posts`;
+                } else{
+                    postsDiv.style.display = 'none';
+                    postsBtn.innerText = `Posts of current user`;
+                }
+            })
 
-                let postsUl = document.createElement('ul');
-                postsDiv.appendChild(postsUl);
+            fetch(`https://jsonplaceholder.typicode.com/users/${userID}/posts`)
+                .then(value => value.json())
+                .then(posts => {
+                    for (const post of posts) {
 
-                fetch(`https://jsonplaceholder.typicode.com/users/${userID}/posts`)
-                    .then(value => value.json())
-                    .then(posts => {
-                        for (const post of posts) {
+                        let postCard = document.createElement('div');
+                        postsDiv.appendChild(postCard);
+                        postCard.style.display = 'flex';
+                        postCard.style.flexDirection = 'column';
+                        postCard.style.border = 'solid 1px black';
+                        postCard.style.width = '19%';
+                        postCard.style.height = '190px';
+                        postCard.style.alignItems = 'center';
+                        postCard.style.justifyContent = 'space-between';
+                        postCard.style.background = 'lightgray';
 
-                            let postLi = document.createElement('li');
-                            postsUl.appendChild(postLi);
-                            postLi.innerText = post.title;
+                        let postTitle = document.createElement('p');
+                        postCard.appendChild(postTitle);
+                        postTitle.innerText = post.title;
+                        postTitle.style.marginLeft = '10px';
+                        postTitle.style.marginRight = '10px';
+                        postTitle.classList.add("postTitle");
 
-                            let postLink = document.createElement('a');
-                            postLi.appendChild(postLink);
-                            postLink.href = `post-details.html?id=${post.id}`;
-                            postLink.innerText = `more...`;
-                            postLink.style.marginLeft = '10px';
-                            postLink.onclick = function (){
-                                location.href = `post-details.html?id=${post.id}`;
-                            }
+                        let postLink = document.createElement('a');
+                        postCard.appendChild(postLink);
+                        postLink.href = `post-details.html?id=${post.id}`;
+                        postLink.innerText = `more...`;
+                        postLink.style.marginLeft = '10px';
+                        postLink.onclick = function (){
+                            location.href = `post-details.html?id=${post.id}`;
                         }
-                    });
-            }
+                    }
+                });
         })
 
 </script>
